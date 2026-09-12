@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: dima_hasao
+      POSTGRES_USER: dima
+      POSTGRES_PASSWORD: dima_password
+    ports:
+      - "127.0.0.1:5434:5432"
+    volumes:
+      - dima_hasao_pgdata:/var/lib/postgresql/data
+
+volumes:
+  dima_hasao_pgdata:

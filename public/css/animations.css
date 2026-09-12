@@ -1,0 +1,133 @@
+/* =====================================================
+   ANIMATIONS — keyframes, scroll reveals, motion utilities
+===================================================== */
+
+/* ---------- Keyframes ---------- */
+@keyframes pulse-dot{
+  0%{ box-shadow: 0 0 0 0 rgba(224,160,82,.55); }
+  70%{ box-shadow: 0 0 0 9px rgba(224,160,82,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(224,160,82,0); }
+}
+@keyframes scroll-cue-move{
+  0%{ transform: scaleY(0); transform-origin: top; opacity: 0; }
+  40%{ transform: scaleY(1); transform-origin: top; opacity: 1; }
+  60%{ transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+  100%{ transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+@keyframes slow-pan{
+  0%{ transform: scale(1.06) translate(0,0); }
+  100%{ transform: scale(1.14) translate(-1.5%,-1%); }
+}
+@keyframes float{
+  0%, 100%{ transform: translateY(0); }
+  50%{ transform: translateY(-10px); }
+}
+@keyframes fadeIn{
+  from{ opacity: 0; } to{ opacity: 1; }
+}
+@keyframes spin{
+  to{ transform: rotate(360deg); }
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal{
+  opacity: 0; transform: translateY(38px);
+  transition: opacity .9s var(--ease), transform .9s var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible{ opacity: 1; transform: translateY(0); }
+
+.reveal-scale{ opacity: 0; transform: scale(.94); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--reveal-delay, 0ms); }
+.reveal-scale.is-visible{ opacity: 1; transform: scale(1); }
+
+.reveal-left{ opacity: 0; transform: translateX(-32px); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: var(--reveal-delay, 0ms); }
+.reveal-left.is-visible{ opacity: 1; transform: translateX(0); }
+
+.reveal-right{ opacity: 0; transform: translateX(32px); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: var(--reveal-delay, 0ms); }
+.reveal-right.is-visible{ opacity: 1; transform: translateX(0); }
+
+@media (prefers-reduced-motion: reduce){
+  .reveal, .reveal-scale, .reveal-left, .reveal-right{ opacity: 1; transform: none; transition: none; }
+  .contour path{ stroke-dashoffset: 0; transition: none; }
+  .page-hero-bg{ animation: none; }
+}
+
+/* ---------- Hero load choreography ---------- */
+.hero-badge, .hero-content h1, .hero-content > p, .hero-buttons{
+  opacity: 0; transform: translateY(26px);
+  animation: hero-up .9s var(--ease) forwards;
+}
+.hero-badge{ animation-delay: .15s; }
+.hero-content h1{ animation-delay: .3s; }
+.hero-content > p{ animation-delay: .48s; }
+.hero-buttons{ animation-delay: .64s; }
+@keyframes hero-up{ to{ opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce){
+  .hero-badge, .hero-content h1, .hero-content > p, .hero-buttons{ opacity: 1; transform: none; animation: none; }
+}
+
+/* ---------- Card glare (tilt pointer highlight) ---------- */
+.tilt{ position: relative; }
+.tilt-glare{
+  position: absolute; inset: 0; border-radius: var(--radius); pointer-events: none;
+  background: radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(245,241,230,.14), transparent 55%);
+  opacity: 0; transition: opacity .4s;
+  z-index: 2;
+}
+.tilt.is-tilting .tilt-glare{ opacity: 1; }
+
+/* ---------- Loading state for hero scene ---------- */
+.hero-canvas.loading::after{
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(245,241,230,.05), transparent);
+  animation: shimmer 1.6s infinite;
+}
+@keyframes shimmer{ from{ transform: translateX(-100%); } to{ transform: translateX(100%); } }
+
+/* ---------- Back to top ---------- */
+.to-top{
+  position: fixed; right: clamp(1.2rem,3vw,2rem); bottom: clamp(1.2rem,3vw,2rem); z-index: 500;
+  width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line);
+  background: var(--marigold); color: #14100a; font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-soft);
+  opacity: 0; transform: translateY(16px) scale(.9); pointer-events: none;
+  transition: opacity .35s var(--ease), transform .35s var(--ease);
+}
+.to-top.show{ opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.to-top:hover{ transform: translateY(-4px) scale(1.03); }
+
+/* ---------- Scroll progress ---------- */
+#scroll-progress{
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--dusk), var(--marigold)); z-index: 1000; transition: width .12s linear;
+}
+
+/* ---------- Counter number tick ---------- */
+.stat .num.counting{ font-variant-numeric: tabular-nums; }
+
+/* ---------- Filter fade for cards ---------- */
+.dest-card-wrap, .pkg-card-wrap{ transition: opacity .35s var(--ease), transform .35s var(--ease); }
+.dest-card-wrap.filtered-out, .pkg-card-wrap.filtered-out{ opacity: 0; transform: scale(.92); position: absolute; pointer-events: none; }
+#chatWidget{ position: fixed; right: clamp(1rem,3vw,2rem); bottom: clamp(1rem,3vw,2rem); z-index: 900; }
+#chatToggle{
+  width: 58px; height: 58px; border-radius: 50%; border: none; cursor: pointer;
+  background: var(--marigold); font-size: 1.5rem; box-shadow: var(--shadow-soft);
+}
+#chatPanel{
+  position: absolute; bottom: 72px; right: 0; width: min(90vw, 360px); height: min(70vh, 480px);
+  background: var(--pine); border: 1px solid var(--line); border-radius: var(--radius);
+  display: flex; flex-direction: column; overflow: hidden; box-shadow: var(--shadow);
+  opacity: 0; transform: translateY(16px) scale(.96); pointer-events: none;
+  transition: opacity .3s var(--ease), transform .3s var(--ease);
+}
+#chatPanel.open{ opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+#chatHeader{ padding: 1rem 1.2rem; background: var(--pine-soft); display: flex; justify-content: space-between; align-items: center; font-weight: 700; }
+#chatHeader button{ background: none; border: none; color: var(--paper); cursor: pointer; font-size: 1.1rem; }
+#chatMessages{ flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.chat-msg{ max-width: 82%; padding: 0.7rem 1rem; border-radius: 14px; font-size: 0.92rem; line-height: 1.5; }
+.chat-msg.bot{ background: var(--pine-soft); align-self: flex-start; }
+.chat-msg.user{ background: var(--marigold); color: #14100a; align-self: flex-end; }
+#chatForm{ display: flex; gap: 0.5rem; padding: 0.8rem; border-top: 1px solid var(--line); }
+#chatForm input{ flex: 1; background: var(--ink); border: 1px solid var(--line); border-radius: 50px; padding: 0.7rem 1rem; color: var(--paper); }
+#chatForm button{ width: 42px; border-radius: 50%; border: none; background: var(--marigold); cursor: pointer; }

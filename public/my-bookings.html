@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>My Bookings & Account — Explore Dima Hasao</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+<div class="scrim"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="destinations.html">Destinations</a>
+  <a href="packages.html">Packages</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="booking.html" class="btn btn-primary btn-block">Plan Your Trip</a>
+</div>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">Dima<span>Hasao</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="packages.html">Packages</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="booking.html" class="btn btn-primary">Plan Your Trip</a>
+      <span id="authSlot" class="nav-auth"></span>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
+  </nav>
+</header>
+
+<section class="page-hero" style="min-height: 40svh;">
+  <div class="page-hero-bg" style="background-image:url('assets/images/hero/hero5.jpeg');"></div>
+  <div class="wrap page-hero-content">
+    <span class="eyebrow">Customer Portal</span>
+    <h1>My Trip Bookings</h1>
+    <p>Track your trip requests, operator status confirmations, and link guest bookings.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap" style="max-width:800px; margin:0 auto;">
+    
+    <div id="myBookingsSignedOut" style="display:none; text-align:center; background:#fff; padding:40px 20px; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.06); margin-bottom:30px;">
+      <h3 style="margin-bottom:8px;">Sign In to View Your Bookings</h3>
+      <p style="color:#666; margin-bottom:20px;">Use Google Sign-In in the top right menu to access your customer dashboard.</p>
+    </div>
+
+    <div id="myBookingsList"></div>
+    
+    <div id="myBookingsEmpty" style="display:none; text-align:center; background:#fff; padding:40px 20px; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.06); margin-bottom:30px;">
+      <h3 style="margin-bottom:8px;">No Linked Bookings Found</h3>
+      <p style="color:#666; margin-bottom:20px;">You don't have any bookings linked to this account yet.</p>
+      <a href="booking.html" class="btn btn-primary">Plan a New Trip</a>
+    </div>
+
+    <!-- Link / Claim Guest Booking Form Box -->
+    <div style="background:#fff; border-radius:12px; padding:30px; box-shadow:0 4px 20px rgba(0,0,0,0.06); margin-top:40px; border:1px solid #EAEAEA;">
+      <h3 style="font-size:18px; margin-top:0; margin-bottom:8px;">Have a Guest Booking Reference?</h3>
+      <p style="color:#666; font-size:14px; margin-bottom:20px; line-height:1.5;">
+        If you submitted a trip request as a guest before signing in, enter your booking reference and email below to link it to your account.
+      </p>
+
+      <form id="claimBookingForm" style="display:grid; grid-template-columns: 1fr 1fr auto; gap:12px; align-items:flex-end;">
+        <div>
+          <label for="claimRef" style="font-size:12px; font-weight:700; color:#555; display:block; margin-bottom:4px;">Booking Reference</label>
+          <input type="text" id="claimRef" placeholder="e.g. DH-2026-A8F23C" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
+        </div>
+
+        <div>
+          <label for="claimEmail" style="font-size:12px; font-weight:700; color:#555; display:block; margin-bottom:4px;">Email Used in Booking</label>
+          <input type="email" id="claimEmail" placeholder="your.email@example.com" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; font-size:14px;">
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="padding:10px 18px; font-size:14px; text-transform:none;">
+          Link to Account
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Dima<span>Hasao</span></a>
+      <p>Small-group, locally-guided journeys through Assam's most underrated hill district.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company & Policies</h4>
+      <ul>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+        <li><a href="cancellation.html">Cancellation Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Reach Us</h4>
+      <ul>
+        <li><p>Haflong, Dima Hasao, Assam</p></li>
+        <li><a href="tel:+918099774793">+91 8099774793</a></li>
+        <li><a href="mailto:novinjoishi789@gmail.com">novinjoishi789@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Explore Dima Hasao Tourism. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/auth.js" defer></script>
+<script src="js/my-bookings.js" defer></script>
+</body>
+</html>

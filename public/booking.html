@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Request Trip Booking — Explore Dima Hasao Tourism</title>
+<meta name="description" content="Submit a booking request for a curated Dima Hasao package. Live total price calculation and transparent local pricing.">
+<link rel="canonical" href="https://dimahasao.com/booking.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+<div class="scrim"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="destinations.html">Destinations</a>
+  <a href="packages.html">Packages</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="booking.html" class="btn btn-primary btn-block">Plan Your Trip</a>
+</div>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">Dima<span>Hasao</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="packages.html">Packages</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="booking.html" class="btn btn-primary active">Plan Your Trip</a>
+      <span id="authSlot" class="nav-auth"></span>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
+  </nav>
+</header>
+
+<section class="page-hero" style="min-height: 44svh;">
+  <div class="page-hero-bg" style="background-image:url('assets/images/hero/hero2.jpeg');"></div>
+  <div class="wrap page-hero-content">
+    <span class="eyebrow">Direct Local Reservation</span>
+    <h1>Request Your Trip</h1>
+    <p>Select your package and departure date. Our team will verify guide & homestay availability within 24 hours.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top: clamp(2rem,4vw,3rem);">
+  <div class="wrap">
+    <div class="booking-grid">
+
+      <form class="booking-form reveal-left" id="bookingForm" novalidate>
+        <h2 style="font-size: var(--fs-h3); margin-bottom: 1.6rem;">Trip Request Form</h2>
+        
+        <div style="background:#E3F2FD; border-radius:8px; padding:14px; margin-bottom:20px; border-left:4px solid #1E88E5; font-size:13px; color:#1565C0;">
+          <strong>ℹ️ Important Note:</strong> Your request is <strong>PENDING</strong> until our local team verifies guide availability and contacts you to confirm your reservation.
+        </div>
+
+        <div class="form-grid">
+          <div class="field full">
+            <label for="bookPackage">Choose a Package *</label>
+            <select id="bookPackage" required>
+              <option value="" data-price="0">Loading available packages…</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="bookDate">Preferred Start Date * (Min 2 Days Notice)</label>
+            <input type="date" id="bookDate" required>
+          </div>
+          <div class="field">
+            <label for="bookTravelers">Travelers *</label>
+            <input type="number" id="bookTravelers" min="1" max="20" value="2" required>
+          </div>
+          <div class="field">
+            <label for="bookName">Full Name *</label>
+            <input type="text" id="bookName" placeholder="e.g. Rahul Sharma" required>
+          </div>
+          <div class="field">
+            <label for="bookPhone">Phone Number *</label>
+            <input type="tel" id="bookPhone" placeholder="+91 9876543210" required>
+          </div>
+          <div class="field full">
+            <label for="bookEmail">Email Address *</label>
+            <input type="email" id="bookEmail" placeholder="rahul@example.com" required>
+          </div>
+          <div class="field full">
+            <label for="bookNotes">Special Requests or Transport Pickup (Optional)</label>
+            <textarea id="bookNotes" placeholder="Pickup from Haflong Station, dietary preferences, extra room requirements…"></textarea>
+          </div>
+          <div class="field full" style="display:flex; align-items:flex-start; gap:10px; margin-top:8px;">
+            <input type="checkbox" id="bookConsent" style="margin-top:4px; width:18px; height:18px;" required>
+            <label for="bookConsent" style="font-size:13px; color:#555; cursor:pointer;">
+              I agree to the <a href="terms.html" target="_blank" style="color:#C9705F;">Terms & Conditions</a>, <a href="privacy.html" target="_blank" style="color:#C9705F;">Privacy Policy</a>, and <a href="cancellation.html" target="_blank" style="color:#C9705F;">Cancellation Policy</a>.
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 1.6rem;">Request This Trip</button>
+      </form>
+
+      <div class="reveal-right">
+        <div class="summary-card">
+          <h2>What's Included</h2>
+          <ul>
+            <li>Experienced local Dimasa guide</li>
+            <li>Forest permits & site entry fees</li>
+            <li>Homestay / Hotel stay as per package</li>
+            <li>All meals as per itinerary</li>
+            <li>24/7 WhatsApp hill assistance</li>
+          </ul>
+          <div class="live-summary">
+            <h4>Live Estimate</h4>
+            <div class="row"><span>Package</span><span id="rowPackage">—</span></div>
+            <div class="row"><span>Travelers</span><span id="rowTravelers">2</span></div>
+            <div class="row"><span>Subtotal</span><span id="rowSubtotal">—</span></div>
+            <div class="total"><span>Total Estimate</span><span id="bookTotal">₹0</span></div>
+          </div>
+        </div>
+
+        <div class="summary-card help-line" style="margin-top:20px;">
+          <h2 style="margin-bottom:0.6rem;">Need Custom Dates or Groups?</h2>
+          <p style="color:var(--mist);">Speak directly with our local Dima Hasao team.</p>
+          <div class="phone"><a href="tel:+918099774793" style="color:inherit; text-decoration:none;">+91 8099774793</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Dima<span>Hasao</span></a>
+      <p>Small-group, locally-guided journeys through Assam's most underrated hill district.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company & Policies</h4>
+      <ul>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+        <li><a href="cancellation.html">Cancellation Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Reach Us</h4>
+      <ul>
+        <li><p>Haflong Town, Dima Hasao, Assam</p></li>
+        <li><a href="tel:+918099774793">+91 8099774793</a></li>
+        <li><a href="mailto:novinjoishi789@gmail.com">novinjoishi789@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Explore Dima Hasao Tourism. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/auth.js" defer></script>
+<script src="js/booking.js" defer></script>
+</body>
+</html>

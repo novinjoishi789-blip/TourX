@@ -1,0 +1,9 @@
+{
+  "name": "explore-dima-hasao",
+  "private": true,
+  "scripts": {
+    "install:server": "npm --prefix server install",
+    "dev": "npm --prefix server run dev",
+    "start": "npm --prefix server start"
+  }
+}

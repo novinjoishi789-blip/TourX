@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Tour Packages — Explore Dima Hasao Tourism</title>
+<meta name="description" content="Curated small-group & custom tour packages in Dima Hasao, Assam. Guided treks, culture trails, and waterfall excursions. Stays, guiding, and permits included.">
+<link rel="canonical" href="https://dimahasao.com/packages.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+<div class="scrim"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="destinations.html">Destinations</a>
+  <a href="packages.html">Packages</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="booking.html" class="btn btn-primary btn-block">Plan Your Trip</a>
+</div>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">Dima<span>Hasao</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="packages.html" class="active">Packages</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="booking.html" class="btn btn-primary">Plan Your Trip</a>
+      <span id="authSlot" class="nav-auth"></span>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('assets/images/hero/hero2.jpeg');"></div>
+  <div class="wrap page-hero-content">
+    <span class="eyebrow">Curated Itineraries</span>
+    <h1>Explore Our Packages</h1>
+    <p>Every package bundles local stays, Dimasa guiding, forest permits, and transport within Dima Hasao — transparent local pricing.</p>
+  </div>
+</section>
+
+<!-- Search & Multi-Filter Bar -->
+<section class="section" style="padding-bottom: 20px;">
+  <div class="wrap">
+    <div class="filter-bar" style="background:var(--surface-color, #fff); padding:20px; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.06); margin-bottom:30px; display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:16px; align-items:center;">
+      
+      <div>
+        <label for="filterSearch" style="font-size:12px; font-weight:600; text-transform:uppercase; color:#666; display:block; margin-bottom:6px;">Search</label>
+        <input type="text" id="filterSearch" placeholder="Search trips, places..." style="width:100%; padding:10px 14px; border:1px solid #ddd; border-radius:8px; font-size:14px;">
+      </div>
+
+      <div>
+        <label for="filterDuration" style="font-size:12px; font-weight:600; text-transform:uppercase; color:#666; display:block; margin-bottom:6px;">Duration</label>
+        <select id="filterDuration" style="width:100%; padding:10px 14px; border:1px solid #ddd; border-radius:8px; font-size:14px; background:#fff;">
+          <option value="all">All Durations</option>
+          <option value="weekend">Weekend (1–2 Days)</option>
+          <option value="multi">3–4 Days</option>
+          <option value="extended">Extended (5+ Days)</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="filterPrice" style="font-size:12px; font-weight:600; text-transform:uppercase; color:#666; display:block; margin-bottom:6px;">Budget</label>
+        <select id="filterPrice" style="width:100%; padding:10px 14px; border:1px solid #ddd; border-radius:8px; font-size:14px; background:#fff;">
+          <option value="all">All Price Ranges</option>
+          <option value="under5k">Under ₹5,000</option>
+          <option value="5k-8k">₹5,000 – ₹8,000</option>
+          <option value="over8k">Above ₹8,000</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="filterDifficulty" style="font-size:12px; font-weight:600; text-transform:uppercase; color:#666; display:block; margin-bottom:6px;">Difficulty</label>
+        <select id="filterDifficulty" style="width:100%; padding:10px 14px; border:1px solid #ddd; border-radius:8px; font-size:14px; background:#fff;">
+          <option value="all">All Levels</option>
+          <option value="Easy">Easy / Leisure</option>
+          <option value="Moderate">Moderate Trek</option>
+          <option value="Challenging">Wilderness / Challenging</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- Dynamic Packages Container -->
+    <div class="grid-3" id="packagesGrid">
+      <div style="grid-column:1/-1; text-align:center; padding:60px 20px;">
+        <p style="color:#666;">Loading available itineraries...</p>
+      </div>
+    </div>
+
+    <div id="emptyState" hidden style="text-align:center; padding:60px 20px; background:#fff; border-radius:12px; margin-top:20px;">
+      <h3 style="margin-bottom:8px;">No matching packages found</h3>
+      <p style="color:#666; margin-bottom:20px;">Try adjusting your filters or search keywords.</p>
+      <a href="contact.html" class="btn btn-primary">Request a Custom Trip Instead</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="cta-band reveal-scale">
+      <span class="eyebrow" style="justify-content:center;">Tailor-Made Experience</span>
+      <h2>Need a Custom Trip in Dima Hasao?</h2>
+      <p>Whether you're a photography crew, solo backpacker, or traveling with family, we craft bespoke itineraries.</p>
+      <a href="contact.html#customTrip" class="btn btn-primary">Request Custom Trip</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Dima<span>Hasao</span></a>
+      <p>Small-group, locally-guided journeys through Assam's most underrated hill district.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/novin_joishi?igsh=ZmE0dzlleThicmds" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100063756517577" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.5 21v-7.7h2.6l.4-3h-3v-1.9c0-.9.2-1.5 1.5-1.5h1.6V4.1C15.9 4 15 4 13.9 4c-2.4 0-4 1.5-4 4.1v2.2H7.3v3h2.6V21h3.6z"/></svg>
+        </a>
+        <a href="mailto:novinjoishi789@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company & Policies</h4>
+      <ul>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+        <li><a href="cancellation.html">Cancellation & Refund</a></li>
+        <li><a href="responsible-tourism.html">Responsible Tourism</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Reach Us</h4>
+      <ul>
+        <li><p>Haflong Town, Dima Hasao, Assam — 788819</p></li>
+        <li><a href="tel:+918099774793">+91 8099774793</a></li>
+        <li><a href="mailto:novinjoishi789@gmail.com">novinjoishi789@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Explore Dima Hasao Tourism. All rights reserved.</span>
+    <span>Made with care in the hills of Assam.</span>
+  </div>
+</footer>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/auth.js" defer></script>
+<script src="js/packages.js" defer></script>
+<div id="chatWidget">
+  <button id="chatToggle" aria-label="Open chat">💬</button>
+  <div id="chatPanel">
+    <div id="chatHeader">
+      <span>Ask about Dima Hasao</span>
+      <button id="chatClose" aria-label="Close chat">✕</button>
+    </div>
+    <div id="chatMessages"></div>
+    <form id="chatForm">
+      <input id="chatInput" type="text" placeholder="Ask about places, distances, history…" autocomplete="off" required>
+      <button type="submit" aria-label="Send">➤</button>
+    </form>
+  </div>
+</div>
+<script src="js/chatbot.js" defer></script>
+</body>
+</html>

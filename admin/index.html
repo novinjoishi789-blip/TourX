@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dima Hasao Tourism — Operator Admin Portal</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <main class="shell">
+
+    <!-- Login View -->
+    <section id="loginView" class="card auth-card">
+      <div class="brand">Dima<span>Hasao</span></div>
+      <p class="eyebrow">TOURISM OPERATOR PORTAL</p>
+      <h1>Sign in</h1>
+      <p class="muted">Manage bookings, package catalog, custom trip requests, & settings.</p>
+      <form id="loginForm">
+        <label>Email Address<input id="email" type="email" autocomplete="username" placeholder="admin@dimahasao.com" required></label>
+        <label>Password<input id="password" type="password" autocomplete="current-password" required></label>
+        <button class="primary" type="submit">Sign in to Dashboard</button>
+        <p id="loginError" class="error"></p>
+      </form>
+    </section>
+
+    <!-- Main Dashboard View -->
+    <section id="appView" hidden>
+      
+      <header class="topbar">
+        <div>
+          <div class="brand">Dima<span>Hasao</span></div>
+          <div class="muted">Local Tourism Platform Administration</div>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <span id="adminUserBadge" style="font-size:13px; font-weight:600; color:#555;"></span>
+          <button id="logoutBtn" class="ghost">Logout</button>
+        </div>
+      </header>
+
+      <!-- Dashboard Stat Cards -->
+      <div class="stats" id="stats"></div>
+
+      <!-- Navigation Tabs -->
+      <div class="admin-nav-tabs">
+        <button data-tab="tabBookings" class="tab-btn active">📦 Bookings</button>
+        <button data-tab="tabPackages" class="tab-btn">⛰️ Packages Catalog</button>
+        <button data-tab="tabCustomTrips" class="tab-btn">🗺️ Custom Trips</button>
+        <button data-tab="tabMessages" class="tab-btn">💬 Inbox Messages</button>
+        <button data-tab="tabSettings" class="tab-btn">⚙️ Site Settings</button>
+        <button data-tab="tabAudit" class="tab-btn">📜 Audit Logs</button>
+        <button id="refreshBtn" class="ghost" style="margin-left:auto;">🔄 Refresh Data</button>
+      </div>
+
+      <!-- Tab 1: Bookings -->
+      <section id="tabBookings" class="tab-content">
+        <div class="toolbar" style="margin-bottom:16px;">
+          <div class="search-box" style="flex:1;">
+            <input type="text" id="bookingSearch" placeholder="Search reference, customer name, phone, email, package..." style="width:100%; padding:8px 12px; border:1px solid #ccc; border-radius:6px;">
+          </div>
+          <div class="tabs" id="statusTabs">
+            <button data-status="ALL" class="active">All</button>
+            <button data-status="PENDING">Pending</button>
+            <button data-status="CONFIRMED">Confirmed</button>
+            <button data-status="CANCELLED">Cancelled</button>
+            <button data-status="COMPLETED">Completed</button>
+          </div>
+        </div>
+
+        <section class="card table-card">
+          <div class="section-head">
+            <div><p class="eyebrow">BOOKING REQUESTS</p><h2>Manage Customer Reservations</h2></div>
+            <span id="bookingCount" class="muted"></span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Reference</th>
+                  <th>Customer</th>
+                  <th>Package</th>
+                  <th>Start Date</th>
+                  <th>Travelers</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="bookingRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <!-- Tab 2: Package CRUD -->
+      <section id="tabPackages" class="tab-content" hidden>
+        <section class="card table-card">
+          <div class="section-head" style="display:flex; justify-content:space-between; align-items:center;">
+            <div><p class="eyebrow">CATALOG MANAGEMENT</p><h2>Tour Packages</h2></div>
+            <button id="btnCreatePackage" class="primary">+ Add New Package</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Package Name</th>
+                  <th>Price / Person</th>
+                  <th>Duration</th>
+                  <th>Difficulty</th>
+                  <th>Featured</th>
+                  <th>Active Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="packageRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <!-- Tab 3: Custom Trip Requests -->
+      <section id="tabCustomTrips" class="tab-content" hidden>
+        <section class="card table-card">
+          <div class="section-head">
+            <div><p class="eyebrow">BUILD MY TRIP</p><h2>Custom Itinerary Inquiries</h2></div>
+            <span id="customTripCount" class="muted"></span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Reference</th>
+                  <th>Customer</th>
+                  <th>Dates</th>
+                  <th>Travelers</th>
+                  <th>Budget</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="customTripRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <!-- Tab 4: Messages / Inbox -->
+      <section id="tabMessages" class="tab-content" hidden>
+        <section class="card table-card">
+          <div class="section-head">
+            <div><p class="eyebrow">INBOX</p><h2>Contact Messages</h2></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Sender</th>
+                  <th>Email</th>
+                  <th>Subject</th>
+                  <th>Received</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="messageRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <!-- Tab 5: Site Settings -->
+      <section id="tabSettings" class="tab-content" hidden>
+        <section class="card" style="padding:24px;">
+          <p class="eyebrow">CONFIGURATION</p>
+          <h2>Platform & Emergency Contact Settings</h2>
+          <form id="settingsForm" style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;">
+            <label>Business Name<input id="set_business_name" type="text" required></label>
+            <label>Tagline<input id="set_tagline" type="text"></label>
+            <label>Contact Phone<input id="set_phone" type="text" required></label>
+            <label>WhatsApp Number<input id="set_whatsapp" type="text" required></label>
+            <label>Contact Email<input id="set_email" type="email" required></label>
+            <label>Office Hours<input id="set_office_hours" type="text"></label>
+            <label style="grid-column:1/-1;">Office Address<input id="set_address" type="text"></label>
+            <label>Emergency Police<input id="set_emergency_police" type="text"></label>
+            <label>Emergency Hospital<input id="set_emergency_hospital" type="text"></label>
+            <label style="grid-column:1/-1;">Emergency Tourism Helpline<input id="set_emergency_tourism" type="text"></label>
+            <div style="grid-column:1/-1; margin-top:10px;">
+              <button type="submit" class="primary">Save Site Settings</button>
+            </div>
+          </form>
+        </section>
+      </section>
+
+      <!-- Tab 6: Audit Logs -->
+      <section id="tabAudit" class="tab-content" hidden>
+        <section class="card table-card">
+          <div class="section-head">
+            <div><p class="eyebrow">SECURITY</p><h2>Admin Activity Audit Logs</h2></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Admin</th>
+                  <th>Action</th>
+                  <th>Entity</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody id="auditRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+    </section>
+
+  </main>
+
+  <!-- Universal Admin Modal -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-panel">
+      <button id="modalClose" class="modal-close">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="admin.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Booking Request Received — Explore Dima Hasao</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+<div class="scrim"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="destinations.html">Destinations</a>
+  <a href="packages.html">Packages</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">Dima<span>Hasao</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="packages.html">Packages</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <span id="authSlot" class="nav-auth"></span>
+    </div>
+  </nav>
+</header>
+
+<section class="section" style="padding-top:120px; padding-bottom:80px; min-height:80vh; display:flex; align-items:center;">
+  <div class="wrap" style="max-width:680px; margin:0 auto;">
+    
+    <div style="background:#fff; border-radius:16px; padding:40px; box-shadow:0 10px 40px rgba(0,0,0,0.08); text-align:center;">
+      
+      <div style="width:64px; height:64px; background:#E8F5E9; color:#2E7D32; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:32px; margin-bottom:20px;">
+        ✓
+      </div>
+
+      <span class="eyebrow" style="justify-content:center; color:#2E7D32; margin-bottom:6px;">Request Received</span>
+      <h1 style="font-size:28px; margin-bottom:12px;">Your Trip Request Has Been Received!</h1>
+      <p style="color:#666; font-size:15px; margin-bottom:30px; line-height:1.6;">
+        We have logged your request. Our local trip operator will review guide & homestay availability and confirm your booking shortly.
+      </p>
+
+      <!-- Booking Card Summary -->
+      <div style="background:#F9F9FB; border:1px solid #EAEAEA; border-radius:12px; padding:24px; text-align:left; margin-bottom:30px;">
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #E0E0E0; padding-bottom:14px; margin-bottom:14px;">
+          <div>
+            <span style="font-size:11px; text-transform:uppercase; color:#888; font-weight:700; display:block;">Booking Reference</span>
+            <strong id="succRef" style="font-size:20px; color:#C9705F; font-family:monospace;">DH-2026-XXXXXX</strong>
+          </div>
+          <span id="succStatus" style="background:#FFF3E0; color:#E65100; font-size:12px; font-weight:700; padding:4px 10px; border-radius:20px;">PENDING</span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; font-size:14px;">
+          <div>
+            <span style="color:#777; display:block; font-size:12px;">Package</span>
+            <strong id="succPkg">—</strong>
+          </div>
+          <div>
+            <span style="color:#777; display:block; font-size:12px;">Start Date</span>
+            <strong id="succDate">—</strong>
+          </div>
+          <div>
+            <span style="color:#777; display:block; font-size:12px;">Travelers</span>
+            <strong id="succTravelers">—</strong>
+          </div>
+          <div>
+            <span style="color:#777; display:block; font-size:12px;">Total Estimate</span>
+            <strong id="succTotal" style="color:#2E7D32;">₹0</strong>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Buttons Grid -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;" class="succ-actions">
+        <a id="succWaBtn" href="https://wa.me/918099774793" target="_blank" rel="noopener" class="btn btn-secondary" style="background:#25D366; color:#fff; border:none; text-decoration:none; padding:12px; font-size:14px;">
+          💬 WhatsApp Us
+        </a>
+        <a href="my-bookings.html" class="btn btn-primary" style="text-decoration:none; padding:12px; font-size:14px;">
+          View My Booking
+        </a>
+        <a href="index.html" class="btn btn-secondary" style="text-decoration:none; padding:12px; font-size:14px; grid-column: 1 / -1; background:#f0f0f0; color:#333; border:none;">
+          Return Home
+        </a>
+      </div>
+
+      <div style="margin-top:24px; border-top:1px solid #f0f0f0; padding-top:16px; font-size:13px; color:#777;">
+        <span>Booked as guest? You can track or link your booking anytime on <a href="my-bookings.html" style="color:#C9705F;">My Bookings</a> using your reference & email.</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom" style="text-align:center; padding:20px; font-size:13px; color:#888;">
+    <span>© 2026 Explore Dima Hasao Tourism. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/auth.js" defer></script>
+<script>
+(() => {
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get('ref') || 'DH-2026-PENDING';
+  const pkg = params.get('pkg') || 'Dima Hasao Tour Package';
+  const date = params.get('date') || 'Upcoming';
+  const travelers = params.get('travelers') || '1';
+  const total = params.get('total') ? '₹' + Number(params.get('total')).toLocaleString('en-IN') : '—';
+
+  document.getElementById('succRef').textContent = ref;
+  document.getElementById('succPkg').textContent = pkg;
+  document.getElementById('succDate').textContent = date;
+  document.getElementById('succTravelers').textContent = `${travelers} Person(s)`;
+  document.getElementById('succTotal').textContent = total;
+
+  const waText = encodeURIComponent(`Hello Explore Dima Hasao, I submitted booking request ${ref} for "${pkg}" starting on ${date} for ${travelers} travelers. Can you confirm availability?`);
+  document.getElementById('succWaBtn').href = `https://wa.me/918099774793?text=${waText}`;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+/* =====================================================
+   EXPLORE DIMA HASAO — CORE STYLESHEET
+   Design system: tokens, type, layout, components
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+img { max-width: 100%; display: block; }
+button, input, select, textarea { font: inherit; color: inherit; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ---------- Design tokens ---------- */
+:root{
+  /* surfaces */
+  --ink:        #0B1512;
+  --pine:       #12241D;
+  --pine-soft:  #1B3327;
+  --pine-line:  #223d31;
+
+  /* text / mist */
+  --paper:      #F5F1E6;
+  --mist:       #A9BDB1;
+  --mist-dim:   #708176;
+  --line:       rgba(233,240,231,0.09);
+
+  /* accents */
+  --marigold:      #E0A052;
+  --marigold-dim:  #B87F3E;
+  --marigold-glow: rgba(224,160,82,0.35);
+  --ember:      #C9705F;
+  --dusk:       #6E8DA6;
+
+  /* type */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Manrope', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* fluid type scale */
+  --fs-hero: clamp(2.6rem, 1.7rem + 4.2vw, 5.4rem);
+  --fs-h1:   clamp(2.1rem, 1.6rem + 2.2vw, 3.4rem);
+  --fs-h2:   clamp(1.8rem, 1.5rem + 1.4vw, 2.6rem);
+  --fs-h3:   clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-lead: clamp(1.05rem, 0.95rem + 0.4vw, 1.25rem);
+  --fs-body: clamp(0.98rem, 0.94rem + 0.15vw, 1.05rem);
+  --fs-small: 0.82rem;
+
+  /* layout */
+  --content-max: 1300px;
+  --pad-inline: clamp(1.25rem, 5vw, 4rem);
+  --pad-section: clamp(4.5rem, 3.6rem + 4.2vw, 8rem);
+  --radius: 22px;
+  --radius-sm: 12px;
+  --shadow: 0 30px 60px -20px rgba(0,0,0,.6);
+  --shadow-soft: 0 18px 40px -18px rgba(0,0,0,.5);
+  --ease: cubic-bezier(.16,.8,.24,1);
+}
+
+body{
+  font-family: var(--font-body);
+  background: var(--ink);
+  color: var(--paper);
+  line-height: 1.6;
+  overflow-x: hidden;
+  font-size: var(--fs-body);
+}
+
+h1,h2,h3,h4{ font-family: var(--font-display); font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; color: var(--paper); }
+
+::selection{ background: var(--marigold); color: #14100a; }
+
+::-webkit-scrollbar{ width: 10px; }
+::-webkit-scrollbar-track{ background: var(--ink); }
+::-webkit-scrollbar-thumb{ background: var(--marigold-dim); border-radius: 20px; }
+::-webkit-scrollbar-thumb:hover{ background: var(--marigold); }
+
+:focus-visible{ outline: 2px solid var(--marigold); outline-offset: 3px; border-radius: 4px; }
+
+/* ---------- Layout primitives ---------- */
+.wrap{ max-width: var(--content-max); margin-inline: auto; padding-inline: var(--pad-inline); }
+.section{ padding-block: var(--pad-section); position: relative; }
+.section-alt{ background: var(--pine); }
+
+.eyebrow{
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: var(--fs-small);
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--marigold);
+}
+.eyebrow::before{ content:""; width: 22px; height: 1px; background: var(--marigold); }
+
+.section-head{ max-width: 640px; margin-bottom: clamp(2.5rem, 2rem + 2vw, 4.5rem); }
+.section-head.center{ max-width: 680px; margin-inline: auto; text-align: center; }
+.section-head h2{ font-size: var(--fs-h2); margin-top: 0.6em; }
+.section-head p{ margin-top: 1em; font-size: var(--fs-lead); color: var(--mist); }
+
+/* ---------- Buttons ---------- */
+.btn{
+  --btn-fg: #14100a;
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 1rem 2rem; border-radius: 50px; border: none; cursor: pointer;
+  font-family: var(--font-body); font-weight: 700; font-size: 0.98rem;
+  background: var(--marigold); color: var(--btn-fg);
+  transition: transform .45s var(--ease), box-shadow .45s var(--ease), background .3s;
+  will-change: transform;
+}
+.btn:hover{ transform: translateY(-4px); box-shadow: 0 20px 40px -8px var(--marigold-glow); }
+.btn:active{ transform: translateY(-1px); }
+.btn-ghost{
+  background: transparent; color: var(--paper); --btn-fg: var(--paper);
+  border: 1.5px solid rgba(245,241,230,.35);
+}
+.btn-ghost:hover{ background: rgba(245,241,230,.08); box-shadow: none; border-color: var(--paper); }
+.btn-block{ width: 100%; }
+
+/* ---------- Header / Nav ---------- */
+header{
+  position: fixed; inset: 0 0 auto 0; z-index: 999;
+  padding: 1.4rem var(--pad-inline);
+  transition: padding .4s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease);
+  background: linear-gradient(rgba(7,14,11,.7), rgba(7,14,11,0));
+}
+header.sticky{
+  padding: 0.85rem var(--pad-inline);
+  background: rgba(11,21,18,.82);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: 0 10px 30px rgba(0,0,0,.3), inset 0 -1px 0 var(--line);
+}
+nav{ display: flex; align-items: center; justify-content: space-between; max-width: var(--content-max); margin-inline: auto; }
+.logo{ font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; letter-spacing: 0.01em; }
+.logo span{ color: var(--marigold); }
+
+.nav-links{ display: flex; align-items: center; gap: clamp(1.4rem, 2vw, 2.4rem); }
+.nav-links a{
+  font-weight: 600; font-size: 0.94rem; position: relative; padding-bottom: 4px;
+}
+.nav-links a::after{
+  content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px;
+  background: var(--marigold); transition: width .35s var(--ease);
+}
+.nav-links a:hover::after, .nav-links a.active::after{ width: 100%; }
+.nav-links .btn{ padding: 0.72rem 1.5rem; font-size: 0.88rem; }
+
+.menu-btn{
+  display: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line);
+  background: rgba(255,255,255,.04); color: var(--paper); font-size: 0; position: relative; cursor: pointer;
+}
+.menu-btn span, .menu-btn::before, .menu-btn::after{
+  content: ""; position: absolute; left: 12px; right: 12px; height: 2px; background: var(--paper);
+  transition: transform .35s var(--ease), opacity .3s;
+}
+.menu-btn::before{ top: 16px; }
+.menu-btn span{ top: 21px; }
+.menu-btn::after{ top: 26px; }
+.menu-btn.open::before{ transform: translateY(5px) rotate(45deg); }
+.menu-btn.open::after{ transform: translateY(-5px) rotate(-45deg); }
+.menu-btn.open span{ opacity: 0; }
+
+.mobile-menu{
+  position: fixed; top: 0; right: 0; height: 100dvh; width: min(86vw, 380px);
+  background: var(--pine); border-left: 1px solid var(--line);
+  display: flex; flex-direction: column; justify-content: center; gap: 0.5rem;
+  padding: 2rem clamp(1.5rem,6vw,3rem);
+  transform: translateX(100%); transition: transform .5s var(--ease);
+  z-index: 998; box-shadow: -30px 0 60px rgba(0,0,0,.4);
+}
+.mobile-menu.show-menu{ transform: translateX(0); }
+.mobile-menu a{
+  font-family: var(--font-display); font-size: 1.7rem; padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line); font-weight: 500;
+}
+.mobile-menu .btn{ margin-top: 1.5rem; text-align: center; }
+.scrim{
+  position: fixed; inset: 0; background: rgba(4,8,6,.6); backdrop-filter: blur(2px);
+  opacity: 0; pointer-events: none; transition: opacity .4s var(--ease); z-index: 997;
+}
+.scrim.show{ opacity: 1; pointer-events: auto; }
+body.menu-open{ overflow: hidden; }
+
+/* ---------- Contour divider ---------- */
+.contour{ display: block; width: 100%; height: 40px; color: var(--pine-line); }
+.contour path{
+  fill: none; stroke: currentColor; stroke-width: 1; stroke-dasharray: 900;
+  stroke-dashoffset: 900; transition: stroke-dashoffset 1.8s var(--ease);
+}
+.contour.is-visible path{ stroke-dashoffset: 0; }
+
+/* ---------- Footer ---------- */
+footer{ background: #060B08; padding: 5rem var(--pad-inline) 2rem; border-top: 1px solid var(--line); }
+.footer-grid{
+  max-width: var(--content-max); margin-inline: auto;
+  display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1.2fr); gap: clamp(2rem,4vw,3rem);
+  padding-bottom: 3.5rem;
+}
+.footer-brand .logo{ margin-bottom: 1rem; display: inline-block; }
+.footer-brand p{ color: var(--mist); max-width: 320px; }
+.footer-col h4{ font-family: var(--font-mono); font-size: var(--fs-small); letter-spacing: .1em; text-transform: uppercase; color: var(--marigold); margin-bottom: 1.2rem; font-weight: 500; }
+.footer-col ul{ display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-col a, .footer-col p{ color: var(--mist); transition: color .25s, padding-left .25s; }
+.footer-col a:hover{ color: var(--paper); padding-left: 4px; }
+.footer-social{ display: flex; gap: 0.6rem; margin-top: 1.2rem; flex-wrap: wrap; }
+.footer-social a{
+  width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center; font-size: 0.95rem;
+  transition: background .3s, transform .3s, border-color .3s;
+}
+.footer-social a:hover{ background: var(--marigold); color: #14100a; transform: translateY(-3px); border-color: var(--marigold); }
+.footer-bottom{
+  max-width: var(--content-max); margin-inline: auto; padding-top: 2rem; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  color: var(--mist-dim); font-size: 0.85rem;
+}
+
+/* =====================================================
+   RESPONSIVE — nav, header, footer
+   (kept in this file, after the base rules above, so
+   these overrides always win the cascade regardless of
+   stylesheet load order)
+===================================================== */
+@media (max-width: 920px){
+  .nav-links{ display: none; }
+  .menu-btn{ display: block; }
+  header{ padding: 1rem var(--pad-inline); }
+  header.sticky{ padding: 0.75rem var(--pad-inline); }
+}
+@media (max-width: 780px){
+  .footer-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); row-gap: 2.6rem; }
+}
+@media (max-width: 520px){
+  .logo{ font-size: 1.25rem; }
+  .footer-grid{ grid-template-columns: minmax(0,1fr); }
+  .footer-bottom{ flex-direction: column; text-align: center; gap: 0.5rem; }
+}

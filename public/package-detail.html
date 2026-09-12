@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Package Details — Explore Dima Hasao Tourism</title>
+<meta name="description" content="Detailed itinerary, inclusions, price breakdown, and booking options for tour packages in Dima Hasao, Assam.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+<div class="scrim"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="destinations.html">Destinations</a>
+  <a href="packages.html">Packages</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="booking.html" class="btn btn-primary btn-block">Plan Your Trip</a>
+</div>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">Dima<span>Hasao</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="packages.html" class="active">Packages</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="booking.html" class="btn btn-primary">Plan Your Trip</a>
+      <span id="authSlot" class="nav-auth"></span>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-bg" id="detailHeroBg" style="background-image:url('assets/images/hero/hero2.jpeg');"></div>
+  <div class="wrap page-hero-content">
+    <span class="eyebrow" id="detailTag">Tour Package</span>
+    <h1 id="detailTitle">Package Details</h1>
+    <p style="font-size:18px;">Starting at <strong id="detailPrice" style="color:#FFD700;">₹0</strong> per person</p>
+  </div>
+</section>
+
+<section class="section" id="detailMainContent">
+  <div class="wrap">
+    
+    <!-- Meta Summary Bar -->
+    <div style="background:#fff; border-radius:12px; padding:20px; box-shadow:0 4px 20px rgba(0,0,0,0.06); margin-bottom:40px; display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:20px; text-align:center;">
+      <div>
+        <span style="font-size:11px; font-weight:700; text-transform:uppercase; color:#888; display:block;">Duration</span>
+        <strong id="metaDuration" style="font-size:16px; color:#333;">—</strong>
+      </div>
+      <div>
+        <span style="font-size:11px; font-weight:700; text-transform:uppercase; color:#888; display:block;">Difficulty</span>
+        <strong id="metaDifficulty" style="font-size:16px; color:#333;">—</strong>
+      </div>
+      <div>
+        <span style="font-size:11px; font-weight:700; text-transform:uppercase; color:#888; display:block;">Max Group Size</span>
+        <strong id="metaMaxTravelers" style="font-size:16px; color:#333;">—</strong>
+      </div>
+      <div>
+        <span style="font-size:11px; font-weight:700; text-transform:uppercase; color:#888; display:block;">Best Season</span>
+        <strong id="metaSeason" style="font-size:16px; color:#333;">—</strong>
+      </div>
+      <div>
+        <span style="font-size:11px; font-weight:700; text-transform:uppercase; color:#888; display:block;">Meeting Point</span>
+        <strong id="metaMeetingPoint" style="font-size:16px; color:#333;">—</strong>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns: 2fr 1fr; gap:40px;" class="detail-layout">
+      
+      <!-- Left Main Body -->
+      <div>
+        <!-- Overview -->
+        <div style="background:#fff; border-radius:12px; padding:30px; box-shadow:0 4px 20px rgba(0,0,0,0.04); margin-bottom:30px;">
+          <h2 style="font-size:22px; margin-bottom:14px; border-bottom:2px solid #f0f0f0; padding-bottom:10px;">Trip Overview</h2>
+          <p id="detailDescription" style="line-height:1.7; color:#444; font-size:16px;">Loading overview...</p>
+        </div>
+
+        <!-- Itinerary Timeline -->
+        <div style="background:#fff; border-radius:12px; padding:30px; box-shadow:0 4px 20px rgba(0,0,0,0.04); margin-bottom:30px;">
+          <h2 style="font-size:22px; margin-bottom:20px; border-bottom:2px solid #f0f0f0; padding-bottom:10px;">Structured Day-by-Day Itinerary</h2>
+          <div id="itineraryList">Loading itinerary...</div>
+        </div>
+
+        <!-- Inclusions vs Exclusions -->
+        <div style="background:#fff; border-radius:12px; padding:30px; box-shadow:0 4px 20px rgba(0,0,0,0.04); margin-bottom:30px; display:grid; grid-template-columns: 1fr 1fr; gap:24px;">
+          <div>
+            <h3 style="font-size:18px; color:#2E7D32; margin-bottom:14px;">✓ What's Included</h3>
+            <ul id="inclusionsList" style="padding:0; margin:0;"></ul>
+          </div>
+          <div>
+            <h3 style="font-size:18px; color:#C9705F; margin-bottom:14px;">✕ What's Excluded</h3>
+            <ul id="exclusionsList" style="padding:0; margin:0;"></ul>
+          </div>
+        </div>
+
+        <!-- Important Notes & Safety -->
+        <div style="background:#FFF9C4; border-radius:12px; padding:24px; border-left:4px solid #FBC02D;">
+          <h4 style="margin:0 0 8px 0; color:#F57F17; font-size:16px;">Important Information & Local Safety</h4>
+          <p style="margin:0; font-size:14px; color:#555; line-height:1.6;">
+            All trips are led by experienced local Dimasa guides. Mountain weather in Dima Hasao can change rapidly; warm layers and waterproof footwear are strongly recommended. Forest permits and local entry fees are handled by our team.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Sidebar CTA Sticky Box -->
+      <div>
+        <div style="background:#fff; border-radius:12px; padding:30px; box-shadow:0 4px 25px rgba(0,0,0,0.08); position:sticky; top:100px;">
+          <h3 style="margin-top:0; margin-bottom:16px; font-size:20px;">Ready to Experience This Trip?</h3>
+          <p style="font-size:14px; color:#666; margin-bottom:24px; line-height:1.5;">
+            Submit your trip request to lock in dates. Our team will verify guide & homestay availability before confirming.
+          </p>
+
+          <a id="btnBookRequest" href="booking.html" class="btn btn-primary btn-block" style="display:block; text-align:center; padding:14px; margin-bottom:14px; text-decoration:none;">
+            Request This Trip
+          </a>
+
+          <a id="btnWhatsAppInquire" href="https://wa.me/918099774793" target="_blank" rel="noopener" class="btn btn-secondary btn-block" style="display:block; text-align:center; padding:12px; text-decoration:none; background:#25D366; color:#fff; border:none;">
+            💬 Inquire on WhatsApp
+          </a>
+
+          <div style="margin-top:20px; text-align:center; font-size:12px; color:#888;">
+            <span>🛡️ No immediate payment required. Operator approval needed.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Related Packages Section -->
+    <div style="margin-top:60px;">
+      <h3 style="font-size:22px; margin-bottom:20px;">Other Experiences You Might Like</h3>
+      <div class="grid-3" id="relatedPackagesGrid"></div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Dima<span>Hasao</span></a>
+      <p>Small-group, locally-guided journeys through Assam's most underrated hill district.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Policies & Contact</h4>
+      <ul>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+        <li><a href="cancellation.html">Cancellation Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Reach Us</h4>
+      <ul>
+        <li><p>Haflong Town, Dima Hasao, Assam</p></li>
+        <li><a href="tel:+918099774793">+91 8099774793</a></li>
+        <li><a href="mailto:novinjoishi789@gmail.com">novinjoishi789@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Explore Dima Hasao Tourism. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/auth.js" defer></script>
+<script src="js/package-detail.js" defer></script>
+</body>
+</html>
